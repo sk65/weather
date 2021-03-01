@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_test">TestActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="text_separator">•</string>
+    <string name="air_quality_index">Индекс качества воздуха</string>
+
+    <string-array name="days_of_the_week">
+        <item>понедельник</item>
+        <item>вторник</item>
+        <item>среда</item>
+        <item>четверг</item>
+        <item>пятница</item>
+        <item>субота</item>
+        <item>воскресение</item>
+    </string-array>
+
+    <string-array name="weather_description">
+        <item>Ясно</item>
+        <item>Мокрый снег</item>
+        <item>Жарко</item>
+        <item>Облачно</item>
+        <item>Гроза</item>
+        <item>Гроза</item>
+        <item>Гроза</item>
+    </string-array>
+</resources>
