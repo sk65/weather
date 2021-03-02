@@ -1,7 +1,9 @@
 package com.example.tabtest.activity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.tabtest.R;
 import com.example.tabtest.SectionsPagerAdapter;
+import com.example.tabtest.fragment.DetailsFragment;
+import com.example.tabtest.fragment.MainFragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.navigation.NavigationView;
@@ -42,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private SwipeRefreshLayout refreshLayout;
+    private SharedPreferences sharedPreferences;
+    private final String LOG_TEG = "DEV";
+    private final String LAST_OPEN_FRAGMENT_TAG = "lastOpenFragmentTag";
+    private final String PREF_KEY = "PrefKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
         initRefreshLayout();
         initTabs();
         initNavView();
+        
+        sharedPreferences = getSharedPreferences(PREF_KEY, Context.MODE_PRIVATE);
+        String test = sharedPreferences.getString(LAST_OPEN_FRAGMENT_TAG, MainFragment.TAG);
+        if (test.equals(MainFragment.TAG)) {
+            viewPager.setCurrentItem(0);
+        } else {
+            viewPager.setCurrentItem(1);
+        }
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(ScreenActivity.CITY_MESSAGE);
@@ -152,5 +168,22 @@ public class MainActivity extends AppCompatActivity {
                 setCity();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        saveCurrentFragmentTag();
+        super.onDestroy();
+    }
+
+    private void saveCurrentFragmentTag() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        int currentFragmentItem = viewPager.getCurrentItem();
+        if (currentFragmentItem == 0) {
+            editor.putString(LAST_OPEN_FRAGMENT_TAG, MainFragment.TAG);
+        } else {
+            editor.putString(LAST_OPEN_FRAGMENT_TAG, DetailsFragment.TAG);
+        }
+        editor.apply();
     }
 }

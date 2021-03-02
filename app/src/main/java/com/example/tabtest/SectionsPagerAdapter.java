@@ -25,9 +25,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     public SectionsPagerAdapter(Context context, @NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
+        Fragment mainFragment = new MainFragment();
+        Fragment detailsFragment = new DetailsFragment();
         fragments = new ArrayList<>(2);
-        fragments.add(new MainFragment());
-        fragments.add(new DetailsFragment());
+        fragments.add(mainFragment);
+        fragments.add(detailsFragment);
         mContext = context;
     }
 

@@ -18,6 +18,7 @@ import com.example.tabtest.MyViewAdapter;
 
 
 public class MainFragment extends Fragment {
+    public static final String TAG = "MainFragmentTag";
     private LinearLayoutManager manager = new LinearLayoutManager(getContext());
     private RecyclerView recyclerView;
     private MyViewAdapter viewAdapter;
@@ -51,11 +52,10 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.button_mainFragment)
                 .setOnClickListener((v) -> MainActivity.viewPager.setCurrentItem(1));
 
-        recyclerView = view.findViewById(R.id.recyclerView_mainFragment);
+
+                recyclerView = view.findViewById(R.id.recyclerView_mainFragment);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
-
-
 
         viewAdapter = new MyViewAdapter(getContext(), daysOfWeek, weatherDescription, weatherIcons);
         recyclerView.setAdapter(viewAdapter);

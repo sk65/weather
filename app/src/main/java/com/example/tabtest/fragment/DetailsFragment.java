@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.tabtest.R;
 
 public class DetailsFragment extends Fragment {
+    public static final String TAG = "DetailsFragmentTag";
     private ProgressBar progressBar;
     private ObjectAnimator objectAnimator;
     private GridView gridView;
