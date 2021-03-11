@@ -11,14 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tabtest.R;
+import com.example.tabtest.model.DayWeatherCardModel;
+
+import java.util.ArrayList;
 
 public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<HorizontalRecyclerViewAdapter.MyViewHolder> {
     private Context context;
-    private int[] weatherIcons;
+    ArrayList<DayWeatherCardModel> cardModels;
 
-    public HorizontalRecyclerViewAdapter(Context context, int[] weatherIcons) {
+    public HorizontalRecyclerViewAdapter(Context context, ArrayList<DayWeatherCardModel> cardModels) {
         this.context = context;
-        this.weatherIcons = weatherIcons;
+        this.cardModels = cardModels;
     }
 
     @NonNull
@@ -31,17 +34,16 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.imageViewWeatherIcon.setImageResource(weatherIcons[position]);
-        holder.imageViewWindDirection.setImageResource(R.drawable.ic_diagonal_arrow);
-        holder.textViewCurrentTime.setText("Сегодня");
-        holder.textViewCurrentTimeTemperature.setText("-2°");
-        holder.textViewCurrentWindSpeed.setText("22 км/час");
-
+        holder.imageViewWeatherIcon.setImageResource(cardModels.get(position).getImageViewWeatherIcon());
+        holder.imageViewWindDirection.setImageResource(cardModels.get(position).getImageViewWindDirection());
+        holder.textViewCurrentTime.setText(cardModels.get(position).getTextViewCurrentTime());
+        holder.textViewCurrentTimeTemperature.setText(cardModels.get(position).getTextViewCurrentTimeTemperature());
+        holder.textViewCurrentWindSpeed.setText(cardModels.get(position).getTextViewCurrentWindSpeed());
     }
 
     @Override
     public int getItemCount() {
-        return weatherIcons.length;
+        return cardModels.size();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {

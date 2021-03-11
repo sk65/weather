@@ -11,18 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tabtest.R;
+import com.example.tabtest.model.WeekWeatherCardModel;
+
+import java.util.ArrayList;
 
 public class VerticalRecyclerViewAdapter extends RecyclerView.Adapter<VerticalRecyclerViewAdapter.MyViewHolder> {
-
-    private String[] daysOfWeek;
-    private String[] weatherDescription;
-    private int[] weatherIcons;
+    private final ArrayList<WeekWeatherCardModel> model;
     private final Context context;
 
-    public VerticalRecyclerViewAdapter(Context context, String[] daysOfWeek, String[] weatherDescription, int[] weatherIcons) {
-        this.daysOfWeek = daysOfWeek;
-        this.weatherDescription = weatherDescription;
-        this.weatherIcons = weatherIcons;
+    public VerticalRecyclerViewAdapter(Context context, ArrayList<WeekWeatherCardModel> model) {
+        this.model = model;
         this.context = context;
     }
 
@@ -36,23 +34,22 @@ public class VerticalRecyclerViewAdapter extends RecyclerView.Adapter<VerticalRe
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.weatherDesc.setText(weatherDescription[position]);
-        holder.dayOfWeek.setText(daysOfWeek[position]);
-        holder.temperatureHolder.setText("-2°  /  -6° ");
-        holder.icon.setImageResource(weatherIcons[position]);
+        holder.weatherDesc.setText(model.get(position).getWeatherDesc());
+        holder.dayOfWeek.setText(model.get(position).getDayOfWeek());
+        holder.temperatureHolder.setText(model.get(position).getTemperatureHolder());
+        holder.icon.setImageResource(model.get(position).getIcon());
     }
 
     @Override
     public int getItemCount() {
-        return daysOfWeek.length;
+        return model.size();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView weatherDesc;
-        private TextView temperatureHolder;
-        private TextView dayOfWeek;
-        private ImageView icon;
+        private final TextView weatherDesc;
+        private final TextView temperatureHolder;
+        private final TextView dayOfWeek;
+        private final ImageView icon;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

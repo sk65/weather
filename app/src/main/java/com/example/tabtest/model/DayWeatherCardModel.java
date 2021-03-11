@@ -4,17 +4,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DayWeatherCardModel {
-    private TextView textViewCurrentTime;
-    private TextView textViewCurrentTimeTemperature;
-    private TextView textViewCurrentWindSpeed;
-    private ImageView imageViewWeatherIcon;
-    private ImageView imageViewWindDirection;
+    private String textViewCurrentTime;
+    private String textViewCurrentTimeTemperature;
+    private String textViewCurrentWindSpeed;
+    private int imageViewWeatherIcon;
+    private int imageViewWindDirection;
 
-    public DayWeatherCardModel(TextView textViewCurrentTime,
-                               TextView textViewCurrentTimeTemperature,
-                               TextView textViewCurrentWindSpeed,
-                               ImageView imageViewWeatherIcon,
-                               ImageView imageViewWindDirection) {
+    public DayWeatherCardModel(String textViewCurrentTime,
+                               String textViewCurrentTimeTemperature,
+                               String textViewCurrentWindSpeed,
+                               int imageViewWeatherIcon,
+                               int imageViewWindDirection) {
         this.textViewCurrentTime = textViewCurrentTime;
         this.textViewCurrentTimeTemperature = textViewCurrentTimeTemperature;
         this.textViewCurrentWindSpeed = textViewCurrentWindSpeed;
@@ -22,23 +22,23 @@ public class DayWeatherCardModel {
         this.imageViewWindDirection = imageViewWindDirection;
     }
 
-    public TextView getTextViewCurrentTime() {
+    public String getTextViewCurrentTime() {
         return textViewCurrentTime;
     }
 
-    public TextView getTextViewCurrentTimeTemperature() {
+    public String getTextViewCurrentTimeTemperature() {
         return textViewCurrentTimeTemperature;
     }
 
-    public TextView getTextViewCurrentWindSpeed() {
+    public String getTextViewCurrentWindSpeed() {
         return textViewCurrentWindSpeed;
     }
 
-    public ImageView getImageViewWeatherIcon() {
+    public int getImageViewWeatherIcon() {
         return imageViewWeatherIcon;
     }
 
-    public ImageView getImageViewWindDirection() {
+    public int getImageViewWindDirection() {
         return imageViewWindDirection;
     }
 }

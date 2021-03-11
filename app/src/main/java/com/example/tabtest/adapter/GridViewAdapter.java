@@ -8,20 +8,23 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.tabtest.R;
+import com.example.tabtest.model.WeatherParamCardModel;
+
+import java.util.ArrayList;
 
 public class GridViewAdapter extends BaseAdapter {
     private Context context;
-    private String[] weatherDescription;
+    private ArrayList<WeatherParamCardModel> models;
     private LayoutInflater inflater;
 
-    public GridViewAdapter(Context context, String[] numberWord) {
+    public GridViewAdapter(Context context, ArrayList<WeatherParamCardModel> models) {
         this.context = context;
-        this.weatherDescription = numberWord;
+        this.models = models;
     }
 
     @Override
     public int getCount() {
-        return weatherDescription.length;
+        return models.size();
     }
 
     @Override
@@ -40,12 +43,12 @@ public class GridViewAdapter extends BaseAdapter {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.row_item, null);
+            convertView = inflater.inflate(R.layout.grid_view_row_item, null);
         }
-        TextView textView = convertView.findViewById(R.id.textView_rowItem_weatherDesc);
-        TextView textView1 = convertView.findViewById(R.id.textView_rowItem_airTemp);
-        textView.setText(weatherDescription[position]);
-        textView1.setText("-2℃");
+        TextView textViewWeatherDescription = convertView.findViewById(R.id.textView_rowItem_weatherDesc);
+        TextView textViewWeatherParam = convertView.findViewById(R.id.textView_rowItem_weatherParam);
+        textViewWeatherDescription.setText(models.get(position).getWeatherDescription());
+        textViewWeatherParam.setText(models.get(position).getWeatherParam());
         return convertView;
     }
 }

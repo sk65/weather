@@ -17,18 +17,19 @@ import com.example.tabtest.R;
 import com.example.tabtest.adapter.VerticalRecyclerViewAdapter;
 import com.example.tabtest.model.WeekWeatherCardModel;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 
 public class MainFragment extends Fragment {
     public static final String TAG = "MainFragmentTag";
-    private LinearLayoutManager manager = new LinearLayoutManager(getContext());
+    private final LinearLayoutManager manager = new LinearLayoutManager(getContext());
     private RecyclerView recyclerView;
     private VerticalRecyclerViewAdapter viewAdapter;
     private String[] daysOfWeek;
     private String[] weatherDescription;
-    private int[] weatherIcons;
-    private ArrayList<WeekWeatherCardModel> model;
+    private ArrayList<WeekWeatherCardModel> weekWeatherCardModels;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,11 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         daysOfWeek = getResources().getStringArray(R.array.days_of_the_week);
         weatherDescription = getResources().getStringArray(R.array.weather_description);
-        weatherIcons = new int[]{
+        int[] weatherIcons = new int[]{
                 R.drawable.ic__02_light,
                 R.drawable.ic__03_snowflake,
                 R.drawable.ic__04_water,
@@ -49,7 +50,7 @@ public class MainFragment extends Fragment {
                 R.drawable.ic_sunny,
                 R.drawable.ic_sunny,
         };
-        model = new ArrayList<>();
+        weekWeatherCardModels = new ArrayList<>();
         for (int i = 0; i < weatherIcons.length; i++) {
             WeekWeatherCardModel cardModel = new WeekWeatherCardModel(
                     weatherDescription[i],
@@ -57,7 +58,7 @@ public class MainFragment extends Fragment {
                     daysOfWeek[i],
                     weatherIcons[i]
             );
-            model.add(cardModel);
+            weekWeatherCardModels.add(cardModel);
         }
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
@@ -70,7 +71,7 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
-        viewAdapter = new VerticalRecyclerViewAdapter(getContext(), daysOfWeek, weatherDescription, weatherIcons);
+        viewAdapter = new VerticalRecyclerViewAdapter(getContext(), weekWeatherCardModels);
         recyclerView.setAdapter(viewAdapter);
 
         super.onViewCreated(view, savedInstanceState);
