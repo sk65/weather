@@ -1,4 +1,4 @@
-package com.example.tabtest.fragment;
+package com.example.tabtest.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,19 +9,19 @@ import android.widget.TextView;
 
 import com.example.tabtest.R;
 
-public class MainAdapter extends BaseAdapter {
+public class GridViewAdapter extends BaseAdapter {
     private Context context;
-    private String[] numberWord;
+    private String[] weatherDescription;
     private LayoutInflater inflater;
 
-    public MainAdapter(Context context, String[] numberWord) {
+    public GridViewAdapter(Context context, String[] numberWord) {
         this.context = context;
-        this.numberWord = numberWord;
+        this.weatherDescription = numberWord;
     }
 
     @Override
     public int getCount() {
-        return numberWord.length;
+        return weatherDescription.length;
     }
 
     @Override
@@ -42,8 +42,10 @@ public class MainAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.row_item, null);
         }
-        TextView textView = convertView.findViewById(R.id.textView_rowItem);
-        textView.setText(numberWord[position]);
+        TextView textView = convertView.findViewById(R.id.textView_rowItem_weatherDesc);
+        TextView textView1 = convertView.findViewById(R.id.textView_rowItem_airTemp);
+        textView.setText(weatherDescription[position]);
+        textView1.setText("-2℃");
         return convertView;
     }
 }

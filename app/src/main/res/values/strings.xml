@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">main</string>
+    <string name="tab_text_2">details</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -12,6 +11,18 @@
     <string name="previous">Previous</string>
     <string name="text_separator">•</string>
     <string name="air_quality_index">Индекс качества воздуха</string>
+    <string name="main_temperature_holder">-2</string>
+    <string name="celsius_degree">℃</string>
+    <string name="weather_desc_main">Ясно</string>
+    <string name="air_quality_index_main">ИКВ 41</string>
+    <string name="detail_button_title">Подробнее ⟩</string>
+    <string name="accuweather">AccuWeather</string>
+    <string name="data_provided">Данные предоставлены</string>
+    <string name="_41">41</string>
+    <string name="todo_1">TODO_1</string>
+    <string name="todo_2">TODO_2</string>
+    <string name="todo_3">TODO_3</string>
+    <string name="refresh">REFRESH</string>
 
     <string-array name="days_of_the_week">
         <item>понедельник</item>
@@ -32,4 +43,23 @@
         <item>Гроза</item>
         <item>Гроза</item>
     </string-array>
+
+    <string-array name="weather_parameters">
+        <item>Ощущается</item>
+        <item>Влажность</item>
+        <item>Вероятность дождя</item>
+        <item>Давление</item>
+        <item>Скорость ветра</item>
+        <item>Индекс УФ</item>
+    </string-array>
+
+    <string-array name="grid_view_details_values">
+        <item>-2℃</item>
+        <item>50%</item>
+        <item>0%</item>
+        <item>1031.00hPa</item>
+        <item>3.7км/час</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

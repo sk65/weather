@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/draverLayout_mainActivity_mainContainer"
+    android:id="@+id/drawerLayout_mainActivity_mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
@@ -29,14 +29,16 @@
                 android:id="@+id/tabLayout_mainActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF" />
+                android:background="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout_mainActivity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout_mainActivity"
+            >
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager_mainActivity"

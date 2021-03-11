@@ -3,13 +3,13 @@
     <item
         android:id="@+id/miItem1"
         android:icon="@drawable/ic_baseline_circle_notifications"
-        android:title="TODO_1" />
+        android:title="@string/todo_1" />
     <item
         android:id="@+id/miItem2"
         android:icon="@drawable/ic_baseline_circle_notifications"
-        android:title="TODO_2" />
+        android:title="@string/todo_2" />
     <item
         android:id="@+id/miItem3"
         android:icon="@drawable/ic_baseline_circle_notifications"
-        android:title="TODO_3" />
+        android:title="@string/todo_3" />
 </menu>

@@ -1,4 +1,4 @@
-package com.example.tabtest;
+package com.example.tabtest.adapter;
 
 import android.content.Context;
 
@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.tabtest.R;
 import com.example.tabtest.fragment.DetailsFragment;
 import com.example.tabtest.fragment.MainFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -46,7 +46,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
         return fragments.size();
     }
 }

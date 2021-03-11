@@ -1,4 +1,4 @@
-package com.example.tabtest;
+package com.example.tabtest.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,16 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.stream.Stream;
+import com.example.tabtest.R;
 
-public class MyViewAdapter extends RecyclerView.Adapter<MyViewAdapter.MyViewHolder> {
+public class VerticalRecyclerViewAdapter extends RecyclerView.Adapter<VerticalRecyclerViewAdapter.MyViewHolder> {
 
     private String[] daysOfWeek;
     private String[] weatherDescription;
     private int[] weatherIcons;
     private final Context context;
 
-    public MyViewAdapter(Context context, String[] daysOfWeek, String[] weatherDescription, int[] weatherIcons) {
+    public VerticalRecyclerViewAdapter(Context context, String[] daysOfWeek, String[] weatherDescription, int[] weatherIcons) {
         this.daysOfWeek = daysOfWeek;
         this.weatherDescription = weatherDescription;
         this.weatherIcons = weatherIcons;
@@ -30,7 +30,7 @@ public class MyViewAdapter extends RecyclerView.Adapter<MyViewAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_item, parent, false);
+        View view = inflater.inflate(R.layout.list_item_main_fragment, parent, false);
         return new MyViewHolder(view);
     }
 

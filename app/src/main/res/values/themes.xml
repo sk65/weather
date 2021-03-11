@@ -22,4 +22,10 @@
     <style name="Theme.TabTest.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TabTest.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <color name="purple_500">#673AB7</color>
+    <color name="purple_700">#512DA8</color>
+    <color name="teal_700">#80DEEA</color>
+    <color name="black">#000000</color>
+    <color name="teal_200">#81D4FA</color>
 </resources>

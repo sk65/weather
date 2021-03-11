@@ -1,6 +1,7 @@
 package com.example.tabtest.activity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,13 +9,11 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tabtest.R;
-import com.example.tabtest.SectionsPagerAdapter;
+import com.example.tabtest.adapter.SectionsPagerAdapter;
 import com.example.tabtest.fragment.DetailsFragment;
 import com.example.tabtest.fragment.MainFragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -35,7 +34,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class MainActivity extends AppCompatActivity {
     private final int LOCATION_PERMISSION_CODE = 101;
@@ -47,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private SwipeRefreshLayout refreshLayout;
     private SharedPreferences sharedPreferences;
-    private final String LOG_TEG = "DEV";
     private final String LAST_OPEN_FRAGMENT_TAG = "lastOpenFragmentTag";
     private final String PREF_KEY = "PrefKey";
 
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         initRefreshLayout();
         initTabs();
         initNavView();
-        
+
         sharedPreferences = getSharedPreferences(PREF_KEY, Context.MODE_PRIVATE);
         String test = sharedPreferences.getString(LAST_OPEN_FRAGMENT_TAG, MainFragment.TAG);
         if (test.equals(MainFragment.TAG)) {
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         if (message != null) {
             getSupportActionBar().setTitle(message);
         } else {
-            getSupportActionBar().setTitle("default");
+            getSupportActionBar().setTitle(R.string.app_name);
         }
     }
 
@@ -95,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_CODE);
             }
             setCity();
-            Toast.makeText(this, "REFRESH", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.refresh), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -109,8 +106,9 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void initNavView() {
-        drawerLayout = findViewById(R.id.draverLayout_mainActivity_mainContainer);
+        drawerLayout = findViewById(R.id.drawerLayout_mainActivity_mainContainer);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -119,14 +117,13 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener((item) -> {
             switch (item.getItemId()) {
                 case R.id.miItem1:
-                    Intent intent = new Intent(this, TestActivity.class);
-                    startActivity(intent);
+                    Toast.makeText(this, R.string.todo_1, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.miItem2:
-                    Toast.makeText(this, "TODO-2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.todo_2, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.miItem3:
-                    Toast.makeText(this, "TODO-3", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.todo_3, Toast.LENGTH_SHORT).show();
                     break;
             }
             return true;
@@ -171,9 +168,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onStop() {
         saveCurrentFragmentTag();
-        super.onDestroy();
+        super.onStop();
     }
 
     private void saveCurrentFragmentTag() {
